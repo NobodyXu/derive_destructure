@@ -8,6 +8,8 @@
 
 [![docs](https://docs.rs/derive_destructure2/badge.svg)](https://docs.rs/derive_destructure2)
 
+**[examples](https://docs.rs/derive_destructure2_examples)**
+
 This crate allows you to destructure structs that implement `Drop`.
 
 If you've ever struggled with error E0509
