@@ -12,5 +12,8 @@ repository = "https://github.com/NobodyXu/derive_destructure2"
 keywords = ["example"]
 categories = []
 
+[package.metadata.docs.rs]
+cargo-args = ["--document-private-items"]
+
 [dependencies]
 derive_destructure2 = { path = "..", version = "0.0.1" }
