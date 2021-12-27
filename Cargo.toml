@@ -3,7 +3,7 @@ name = "derive_destructure2"
 version = "1.0.0"
 edition = "2018"
 
-authors = ["Michiel De Muynck <michieldemuynck@gmail.com>"]
+authors = ["Jiahao XU <Jiahao_XU@outlook.com>"]
 
 license = "MIT OR Apache-2.0"
 description = "Destructure structs that implement Drop"
