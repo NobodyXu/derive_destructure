@@ -1,7 +1,13 @@
-[![Crates.io](https://img.shields.io/crates/v/derive_destructure2.svg)](https://crates.io/crates/derive_destructure2)
-[![Build Status](https://travis-ci.org/Migi/derive_destructure2.svg?branch=master)](https://travis-ci.org/Migi/derive_destructure2)
-
 # derive_destructure2
+
+[![Rust](https://github.com/NobodyXu/derive_destructure2/actions/workflows/rust.yml/badge.svg)](https://github.com/NobodyXu/derive_destructure2/actions/workflows/rust.yml)
+
+[![crate.io downloads](https://img.shields.io/crates/d/derive_destructure2)](https://crates.io/crates/derive_destructure2)
+
+[![crate.io version](https://img.shields.io/crates/v/derive_destructure2)](https://crates.io/crates/derive_destructure2)
+
+[![docs](https://docs.rs/derive_destructure2/badge.svg)](https://docs.rs/derive_destructure2)
+
 
 This crate allows you to destructure structs that implement `Drop`.
 
@@ -10,6 +16,7 @@ If you've ever struggled with error E0509
 then this crate may be for you.
 
 To use this crate, put this in your `lib.rs` or `main.rs`:
+
 ```rust
 #[macro_use]
 extern crate derive_destructure2;
@@ -20,6 +27,7 @@ Then you have 2 ways to use this crate:
 ## Option 1: `#[derive(destructure)]`
 
 If you mark a struct with `#[derive(destructure)]`, then you can destructure it using
+
 ```rust
 let (field_1, field_2, ...) = my_struct.destructure();
 ```
@@ -32,6 +40,7 @@ Note: in Rust, a tuple of 1 element is denoted as `(x,)`, not `(x)`.
 ## Option 2: `#[derive(remove_trait_impls)]`
 
 If you mark your struct with `#[derive(remove_trait_impls)]`, then you can do
+
 ```rust
 let my_struct = my_struct.remove_trait_impls();
 ```
@@ -47,6 +56,7 @@ out this name.
 `#[derive(remove_trait_impls)]` works on enums too.
 
 ## Example:
+
 ```rust
 #[macro_use]
 extern crate derive_destructure2;
