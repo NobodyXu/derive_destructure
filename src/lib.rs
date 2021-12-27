@@ -117,14 +117,14 @@ pub fn derive_destructure(input: proc_macro::TokenStream) -> proc_macro::TokenSt
                     let field_reads = fields.named.iter().map(|f| {
                         let ident = &f.ident;
                         quote_spanned! {f.span()=>
-                            ::std::ptr::read(&self_ref.#ident)
+                            ::core::ptr::read(&self_ref.#ident)
                         }
                     });
                     quote! {
                         impl #impl_generics #name #ty_generics #where_clause {
                             #[inline(always)]
                             fn destructure(self) -> (#(#field_types,)*) {
-                                let maybe_uninit = ::std::mem::MaybeUninit::new(self);
+                                let maybe_uninit = ::core::mem::MaybeUninit::new(self);
                                 unsafe {
                                     let self_ref = &*maybe_uninit.as_ptr();
                                     (#(#field_reads,)*)
@@ -143,14 +143,14 @@ pub fn derive_destructure(input: proc_macro::TokenStream) -> proc_macro::TokenSt
                     let field_reads = fields.unnamed.iter().enumerate().map(|(i,f)| {
                         let index = Index::from(i);
                         quote_spanned! {f.span()=>
-                            ::std::ptr::read(&self_ref.#index)
+                            ::core::ptr::read(&self_ref.#index)
                         }
                     });
                     quote! {
                         impl #impl_generics #name #ty_generics #where_clause {
                             #[inline(always)]
                             fn destructure(self) -> (#(#field_types,)*) {
-                                let maybe_uninit = ::std::mem::MaybeUninit::new(self);
+                                let maybe_uninit = ::core::mem::MaybeUninit::new(self);
                                 unsafe {
                                     let self_ref = &*maybe_uninit.as_ptr();
                                     (#(#field_reads,)*)
@@ -164,7 +164,7 @@ pub fn derive_destructure(input: proc_macro::TokenStream) -> proc_macro::TokenSt
                         impl #impl_generics #name #ty_generics #where_clause {
                             #[inline(always)]
                             fn destructure(self) {
-                                let _ = ::std::mem::MaybeUninit::new(self);
+                                let _ = ::core::mem::MaybeUninit::new(self);
                             }
                         }
                     }
@@ -200,7 +200,7 @@ pub fn derive_remove_trait_impls(input: proc_macro::TokenStream) -> proc_macro::
                 let field_reads_iter = fields.named.iter().map(|f| {
                     let ident = &f.ident;
                     quote_spanned! {f.span()=>
-                        #ident: ::std::ptr::read(&self_ref.#ident)
+                        #ident: ::core::ptr::read(&self_ref.#ident)
                     }
                 });
                 quote! {
@@ -212,7 +212,7 @@ pub fn derive_remove_trait_impls(input: proc_macro::TokenStream) -> proc_macro::
                     impl #impl_generics #name #ty_generics #where_clause {
                         #[inline(always)]
                         fn remove_trait_impls(self) -> #new_type_name #ty_generics {
-                            let maybe_uninit = ::std::mem::MaybeUninit::new(self);
+                            let maybe_uninit = ::core::mem::MaybeUninit::new(self);
                             unsafe {
                                 let self_ref = &*maybe_uninit.as_ptr();
                                 #new_type_name {
@@ -233,7 +233,7 @@ pub fn derive_remove_trait_impls(input: proc_macro::TokenStream) -> proc_macro::
                 let field_reads_iter = fields.unnamed.iter().enumerate().map(|(i, f)| {
                     let index = Index::from(i);
                     quote_spanned! {f.span()=>
-                        ::std::ptr::read(&self_ref.#index)
+                        ::core::ptr::read(&self_ref.#index)
                     }
                 });
                 quote! {
@@ -243,7 +243,7 @@ pub fn derive_remove_trait_impls(input: proc_macro::TokenStream) -> proc_macro::
                     impl #impl_generics #name #ty_generics #where_clause {
                         #[inline(always)]
                         fn remove_trait_impls(self) -> #new_type_name #ty_generics {
-                            let maybe_uninit = ::std::mem::MaybeUninit::new(self);
+                            let maybe_uninit = ::core::mem::MaybeUninit::new(self);
                             unsafe {
                                 let self_ref = &*maybe_uninit.as_ptr();
                                 #new_type_name(#(#field_reads_iter,)*)
@@ -260,7 +260,7 @@ pub fn derive_remove_trait_impls(input: proc_macro::TokenStream) -> proc_macro::
                     impl #impl_generics #name #ty_generics #where_clause {
                         #[inline(always)]
                         fn remove_trait_impls(self) -> #new_type_name #ty_generics {
-                            let _ = ::std::mem::MaybeUninit::new(self);
+                            let _ = ::core::mem::MaybeUninit::new(self);
                             #new_type_name
                         }
                     }
@@ -314,7 +314,7 @@ pub fn derive_remove_trait_impls(input: proc_macro::TokenStream) -> proc_macro::
                         let field_reads_iter = fields.named.iter().map(|f| {
                             let ident = &f.ident;
                             quote_spanned! {f.span()=>
-                                #ident: ::std::ptr::read(#ident)
+                                #ident: ::core::ptr::read(#ident)
                             }
                         });
                         quote! {
@@ -331,7 +331,7 @@ pub fn derive_remove_trait_impls(input: proc_macro::TokenStream) -> proc_macro::
                         let field_reads_iter = fields.unnamed.iter().enumerate().map(|(i,f)| {
                             let index = Ident::new(&format!("__{}", i), f.span());
                             quote_spanned! {f.span()=>
-                                ::std::ptr::read(#index)
+                                ::core::ptr::read(#index)
                             }
                         });
                         quote! {
@@ -353,7 +353,7 @@ pub fn derive_remove_trait_impls(input: proc_macro::TokenStream) -> proc_macro::
                 impl #impl_generics #name #ty_generics #where_clause {
                     #[inline(always)]
                     fn remove_trait_impls(self) -> #new_type_name #ty_generics {
-                        let maybe_uninit = ::std::mem::MaybeUninit::new(self);
+                        let maybe_uninit = ::core::mem::MaybeUninit::new(self);
                         unsafe {
                             match &*maybe_uninit.as_ptr() {
                                 #(#match_arms_iter,)*
