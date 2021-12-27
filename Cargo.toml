@@ -10,6 +10,7 @@ description = "Destructure structs that implement Drop"
 repository = "https://github.com/Migi/derive_destructure2"
 
 keywords = ["derive", "destructure", "drop", "E0509", "remove_trait_impls", "no-std"]
+categories = ["no-std", "rust-patterns"]
 
 [lib]
 proc-macro = true
