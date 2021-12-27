@@ -17,7 +17,7 @@ proc-macro = true
 
 [workspace]
 members = [
-    "derive_destructure2_examples_generated"
+    "derive_destructure2_examples"
 ]
 
 [dependencies]
