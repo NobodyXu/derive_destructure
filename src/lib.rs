@@ -22,6 +22,7 @@
 //! # Option 1: `#[derive(destructure)]`
 //!
 //! If you mark a struct with `#[derive(destructure)]`, then you can destructure it using
+//! from your crate
 //!
 //! ```ignore
 //! let (field_1, field_2, ...) = my_struct.destructure();
@@ -32,9 +33,12 @@
 //!
 //! Note: in Rust, a tuple of 1 element is denoted as `(x,)`, not `(x)`.
 //!
+//!  __**`destructure` is implemented as a private associated function.**__
+//!
 //! # Option 2: `#[derive(remove_trait_impls)]`
 //!
 //! If you mark your struct with `#[derive(remove_trait_impls)]`, then you can do
+//! from your crate
 //!
 //! ```ignore
 //! let my_struct = my_struct.remove_trait_impls();
@@ -44,11 +48,15 @@
 //! (except automatically-implemented traits like `Sync` and `Send`).
 //! In particular, it doesn't implement `Drop`, so you can move fields out of it.
 //!
-//! The name of the resulting struct is the original name plus the suffix `WithoutTraitImpls`.
+//! The name of the resulting struct is the original name plus the suffix
+//! `WithoutTraitImpls`.
+//!
 //! For example, `Foo` becomes `FooWithoutTraitImpls`. But you usually don't need to write
 //! out this name.
 //!
 //! `#[derive(remove_trait_impls)]` works on enums too.
+//!
+//!  __**`remove_trait_impls` is a private associated function.**__
 //!
 //! # Example:
 //!
