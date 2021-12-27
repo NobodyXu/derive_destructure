@@ -45,7 +45,7 @@ method**. You can then happily move elements out of this tuple.
 
 Note: in Rust, a tuple of 1 element is denoted as `(x,)`, not `(x)`.
 
-__**`destructure` is implemented as a `pub(crate)` associated function.**__
+__**`destructure` is implemented as a private associated function.**__
 
 ## Option 2: `#[derive(remove_trait_impls)]`
 
@@ -68,7 +68,7 @@ out this name.
 
 `#[derive(remove_trait_impls)]` works on enums too.
 
-__**`remove_trait_impls` is a `pub(crate)` associated function.**__
+__**`remove_trait_impls` is a private associated function.**__
 
 ## Example:
 
