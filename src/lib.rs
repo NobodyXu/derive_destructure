@@ -92,8 +92,6 @@
 // The `quote!` macro requires deep recursion.
 #![recursion_limit = "512"]
 
-extern crate proc_macro;
-
 use proc_macro2::{Ident, Span};
 use quote::{quote, quote_spanned};
 use syn::spanned::Spanned;
