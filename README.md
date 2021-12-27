@@ -1,4 +1,4 @@
-# derive_destructure2
+# derive_destructure2 **(no-std)**
 
 [![Rust](https://github.com/NobodyXu/derive_destructure2/actions/workflows/rust.yml/badge.svg)](https://github.com/NobodyXu/derive_destructure2/actions/workflows/rust.yml)
 
@@ -7,7 +7,6 @@
 [![crate.io version](https://img.shields.io/crates/v/derive_destructure2)](https://crates.io/crates/derive_destructure2)
 
 [![docs](https://docs.rs/derive_destructure2/badge.svg)](https://docs.rs/derive_destructure2)
-
 
 This crate allows you to destructure structs that implement `Drop`.
 
