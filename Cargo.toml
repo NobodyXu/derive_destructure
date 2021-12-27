@@ -15,6 +15,11 @@ categories = ["no-std", "rust-patterns"]
 [lib]
 proc-macro = true
 
+[workspace]
+members = [
+    "derive_destructure2_examples_generated"
+]
+
 [dependencies]
 proc-macro2 = "1"
 syn = "1"
