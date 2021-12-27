@@ -3,7 +3,7 @@
 use derive_destructure2::*;
 
 #[derive(destructure, remove_trait_impls)]
-struct ImplementsDrop {
+pub struct ImplementsDrop {
     some_str: String,
     some_int: i32,
 }
