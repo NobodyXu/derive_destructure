@@ -1,5 +1,5 @@
 #[macro_use]
-extern crate derive_destructure;
+extern crate derive_destructure2;
 
 #[derive(remove_trait_impls)]
 pub enum Simple {

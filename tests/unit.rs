@@ -1,5 +1,5 @@
 #[macro_use]
-extern crate derive_destructure;
+extern crate derive_destructure2;
 
 // This is perhaps rather pointless, as you can just use std::mem::forget instead...
 // Oh well.

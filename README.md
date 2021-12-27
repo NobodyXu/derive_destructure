@@ -1,7 +1,7 @@
-[![Crates.io](https://img.shields.io/crates/v/derive_destructure.svg)](https://crates.io/crates/derive_destructure)
-[![Build Status](https://travis-ci.org/Migi/derive_destructure.svg?branch=master)](https://travis-ci.org/Migi/derive_destructure)
+[![Crates.io](https://img.shields.io/crates/v/derive_destructure2.svg)](https://crates.io/crates/derive_destructure2)
+[![Build Status](https://travis-ci.org/Migi/derive_destructure2.svg?branch=master)](https://travis-ci.org/Migi/derive_destructure2)
 
-# derive_destructure
+# derive_destructure2
 
 This crate allows you to destructure structs that implement `Drop`.
 
@@ -12,7 +12,7 @@ then this crate may be for you.
 To use this crate, put this in your `lib.rs` or `main.rs`:
 ```rust
 #[macro_use]
-extern crate derive_destructure;
+extern crate derive_destructure2;
 ```
 
 Then you have 2 ways to use this crate:
@@ -49,7 +49,7 @@ out this name.
 ## Example:
 ```rust
 #[macro_use]
-extern crate derive_destructure;
+extern crate derive_destructure2;
 
 #[derive(destructure, remove_trait_impls)]
 struct ImplementsDrop {
