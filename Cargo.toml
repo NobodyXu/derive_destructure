@@ -2,19 +2,16 @@
 name = "derive_destructure2"
 version = "1.0.0"
 edition = "2018"
+
 authors = ["Michiel De Muynck <michieldemuynck@gmail.com>"]
+
 license = "MIT OR Apache-2.0"
 description = "Destructure structs that implement Drop"
 repository = "https://github.com/Migi/derive_destructure2"
-keywords = ["derive", "destructure", "drop", "E0509", "remove_trait_impls"]
-readme = "README.md"
 
-[badges]
-travis-ci = { repository = "Migi/derive_destructure2" }
+keywords = ["derive", "destructure", "drop", "E0509", "remove_trait_impls"]
 
 [lib]
-name = "derive_destructure2"
-path = "src/lib.rs"
 proc-macro = true
 
 [dependencies]
