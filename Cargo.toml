@@ -9,7 +9,7 @@ license = "MIT OR Apache-2.0"
 description = "Destructure structs that implement Drop"
 repository = "https://github.com/NobodyXu/derive_destructure2"
 
-keywords = ["derive", "destructure", "drop", "E0509", "remove_trait_impls", "no-std"]
+keywords = ["derive", "destructure", "drop", "E0509", "remove_trait_impls"]
 categories = ["no-std", "rust-patterns"]
 
 [lib]
