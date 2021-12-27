@@ -1,7 +1,3 @@
-#![allow(dead_code)]
-
-pub mod examples;
-
 use derive_destructure2::*;
 
 #[derive(destructure, remove_trait_impls)]
