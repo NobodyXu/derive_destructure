@@ -15,11 +15,17 @@ If you've ever struggled with error E0509
 "cannot move out of type `T`, which implements the `Drop` trait"
 then this crate may be for you.
 
-To use this crate, put this in your `lib.rs` or `main.rs`:
+To use this crate, put this in your `lib.rs` or `main.rs` for rust < 1.30:
 
-```rust
+```ignore
 #[macro_use]
 extern crate derive_destructure2;
+```
+
+For rust >= 1.30, just import it as a regular item:
+
+```ignore
+use derive_destructure2::{derive_destructure, remove_trait_impls};
 ```
 
 Then you have 2 ways to use this crate:
@@ -58,8 +64,7 @@ out this name.
 ## Example:
 
 ```rust
-#[macro_use]
-extern crate derive_destructure2;
+use derive_destructure2::*;
 
 #[derive(destructure, remove_trait_impls)]
 struct ImplementsDrop {

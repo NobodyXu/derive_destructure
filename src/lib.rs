@@ -4,10 +4,17 @@
 //! "cannot move out of type `T`, which implements the `Drop` trait"
 //! then this crate may be for you.
 //!
-//! To use this crate, put this in your `lib.rs` or `main.rs`:
+//! To use this crate, put this in your `lib.rs` or `main.rs` for rust < 1.30:
+//!
 //! ```ignore
 //! #[macro_use]
 //! extern crate derive_destructure2;
+//! ```
+//!
+//! For rust >= 1.30, just import it as a regular item:
+//!
+//! ```ignore
+//! use derive_destructure2::{derive_destructure, remove_trait_impls};
 //! ```
 //!
 //! Then you have 2 ways to use this crate:
@@ -15,6 +22,7 @@
 //! # Option 1: `#[derive(destructure)]`
 //!
 //! If you mark a struct with `#[derive(destructure)]`, then you can destructure it using
+//!
 //! ```ignore
 //! let (field_1, field_2, ...) = my_struct.destructure();
 //! ```
@@ -27,6 +35,7 @@
 //! # Option 2: `#[derive(remove_trait_impls)]`
 //!
 //! If you mark your struct with `#[derive(remove_trait_impls)]`, then you can do
+//!
 //! ```ignore
 //! let my_struct = my_struct.remove_trait_impls();
 //! ```
@@ -42,9 +51,9 @@
 //! `#[derive(remove_trait_impls)]` works on enums too.
 //!
 //! # Example:
-//! ```
-//! #[macro_use]
-//! extern crate derive_destructure2;
+//!
+//! ```rust
+//! use derive_destructure2::*;
 //!
 //! #[derive(destructure, remove_trait_impls)]
 //! struct ImplementsDrop {
@@ -58,7 +67,7 @@
 //!     }
 //! }
 //!
-//! fn main() {
+//! # fn main() {
 //!     // Using destructure():
 //!     let x = ImplementsDrop {
 //!         some_str: "foo".to_owned(),
@@ -77,7 +86,7 @@
 //!     // so we can move fields out of it
 //!     drop(x.some_str);
 //!     println!("{}", x.some_int);
-//! }
+//! # }
 //! ```
 
 // The `quote!` macro requires deep recursion.
