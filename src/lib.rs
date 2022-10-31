@@ -15,8 +15,8 @@
 //!
 //! For rust >= 1.30, just import it as a regular item:
 //!
-//! ```ignore
-//! use derive_destructure2::{derive_destructure, remove_trait_impls};
+//! ```
+//! use derive_destructure2::{destructure, remove_trait_impls};
 //! ```
 //!
 //! Then you have 2 ways to use this crate:
