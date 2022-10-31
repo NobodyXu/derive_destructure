@@ -1,6 +1,6 @@
 [package]
 name = "derive_destructure2_examples"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2018"
 
 authors = ["Jiahao XU <Jiahao_XU@outlook.com>"]
