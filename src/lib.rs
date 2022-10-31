@@ -15,7 +15,7 @@
 //!
 //! For rust >= 1.30, just import it as a regular item:
 //!
-//! ```
+//! ```rust
 //! use derive_destructure2::{destructure, remove_trait_impls};
 //! ```
 //!
@@ -26,8 +26,20 @@
 //! If you mark a struct with `#[derive(destructure)]`, then you can destructure it using
 //! from your crate
 //!
-//! ```ignore
-//! let (field_1, field_2, ...) = my_struct.destructure();
+//! ```rust
+//! use derive_destructure2::destructure;
+//!
+//! #[derive(destructure)]
+//! struct S {
+//!     field_1: u32,
+//!     field_2: i32
+//! }
+//!
+//! let val = S {
+//!     field_1: 1,
+//!     field_2: 2,
+//! };
+//! let (field_1, field_2) = val.destructure();
 //! ```
 //!
 //! This turns the struct into a tuple of its fields **without running the struct's `drop()`
@@ -42,8 +54,28 @@
 //! If you mark your struct with `#[derive(remove_trait_impls)]`, then you can do
 //! from your crate
 //!
-//! ```ignore
-//! let my_struct = my_struct.remove_trait_impls();
+//! ```rust
+//! use derive_destructure2::remove_trait_impls;
+//!
+//! #[derive(remove_trait_impls)]
+//! struct S {
+//!     field_1: u32,
+//!     field_2: i32
+//! }
+//! impl Drop for S {
+//!     fn drop(&mut self) {
+//!         panic!("Dropped!");
+//!     }
+//! }
+//!
+//! let val = S {
+//!     field_1: 1,
+//!     field_2: 2,
+//! };
+//! let val = val.remove_trait_impls();
+//!
+//! // Dropping val no longer calls `S::drop`.
+//! drop(val);
 //! ```
 //!
 //! The result is a struct with the same fields, but it implements no traits
@@ -78,24 +110,24 @@
 //! }
 //!
 //! # fn main() {
-//!     // Using destructure():
-//!     let x = ImplementsDrop {
-//!         some_str: "foo".to_owned(),
-//!         some_int: 4
-//!     };
-//!     let (some_str, some_int) = x.destructure();
-//!     // x's drop() method never gets called
+//! // Using destructure():
+//! let x = ImplementsDrop {
+//!     some_str: "foo".to_owned(),
+//!     some_int: 4
+//! };
+//! let (some_str, some_int) = x.destructure();
+//! // x's drop() method never gets called
 //!
-//!     // Using remove_trait_impls():
-//!     let x = ImplementsDrop {
-//!         some_str: "foo".to_owned(),
-//!         some_int: 4
-//!     };
-//!     let x = x.remove_trait_impls();
-//!     // this x doesn't implement drop,
-//!     // so we can move fields out of it
-//!     drop(x.some_str);
-//!     println!("{}", x.some_int);
+//! // Using remove_trait_impls():
+//! let x = ImplementsDrop {
+//!     some_str: "foo".to_owned(),
+//!     some_int: 4
+//! };
+//! let x = x.remove_trait_impls();
+//! // this x doesn't implement drop,
+//! // so we can move fields out of it
+//! drop(x.some_str);
+//! println!("{}", x.some_int);
 //! # }
 //! ```
 
