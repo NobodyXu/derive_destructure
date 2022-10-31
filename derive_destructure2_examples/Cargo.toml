@@ -16,4 +16,4 @@ categories = []
 cargo-args = ["--", "--document-private-items"]
 
 [dependencies]
-derive_destructure2 = { path = "..", version = "0.0.2" }
+derive_destructure2 = { path = "..", version = "0.1.1" }
