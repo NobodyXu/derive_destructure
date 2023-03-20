@@ -22,5 +22,5 @@ members = [
 
 [dependencies]
 proc-macro2 = "1"
-syn = "1"
+syn = "2"
 quote = "1"
